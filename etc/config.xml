@@ -1,10 +1,17 @@
 <?xml version="1.0"?>
 <config>
+    <global>
+        <models>
+            <gareth_royalmail2>
+                <class>Gareth_RoyalMail2_Model</class>
+            </gareth_royalmail2>
+        </models>
+    </global>
     <default>
     <!-- Setting default values for the System Configuration UI and in
         particular the custom config defined in system.xml -->
         <carriers>
-            <gareth_royalmail>
+            <gareth_royalmail2>
                 <active>1</active>
                 <sort_order>0</sort_order>
                 <model>gareth_royalmail2/carrier</model>
@@ -12,7 +19,7 @@
                 <title>Royal Mail</title>
                 <sallowspecific>1</sallowspecific>
                 <specificcountry>UK</specificcountry>
-            </gareth_royalmail>
+            </gareth_royalmail2>
         </carriers>
     </default>
 </config>
