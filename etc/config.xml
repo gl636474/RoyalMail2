@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config>
+    <default>
+    <!-- Setting default values for the System Configuration UI and in
+        particular the custom config defined in system.xml -->
+        <carriers>
+            <gareth_royalmail>
+                <active>1</active>
+                <sort_order>0</sort_order>
+                <model>gareth_royalmail2/carrier</model>
+                <name>Royal Mail</name>
+                <title>Royal Mail</title>
+                <sallowspecific>1</sallowspecific>
+                <specificcountry>UK</specificcountry>
+            </gareth_royalmail>
+        </carriers>
+    </default>
+</config>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Gareth_RoyalMail2>
+			<version>2.0.0</version>
+			<active>true</active>
+			<codePool>local</codePool>
+            <depends>
+                <Mage_Shipping />
+            </depends>
+		</Gareth_RoyalMail2>
+	</modules>
+</config>
