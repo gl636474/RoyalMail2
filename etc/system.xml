@@ -3,8 +3,9 @@
     <sections>
         <carriers>
             <groups>
-                <Gareth_RoyalMail2 translate="label">
-                    <label>Gareth RoyalMail Carrier Enhanced</label>
+                <!-- Must match the value of the $_code variable -->
+                <gareth_royalmail2 translate="label">
+                    <label>Gareth RoyalMail Carrier</label>
                     <sort_order>2</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
@@ -47,8 +48,61 @@
                             <show_in_store>1</show_in_store>
                             <can_be_empty>1</can_be_empty>
                         </specificcountry>
+                        <default_length translate="label">
+                            <label>Default package height if not specified in product (cm)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <validate>validate-number</validate>
+                            <validate>validate-zero-or-greater</validate>
+                        </default_length>
+                        <default_width translate="label">
+                            <label>Default package width if not specified in product (cm)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>51</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <validate>validate-number</validate>
+                            <validate>validate-zero-or-greater</validate>
+                        </default_width>
+                        <default_depth translate="label">
+                            <label>Default package depth if not specified in product (cm)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>52</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <validate>validate-number</validate>
+                            <validate>validate-zero-or-greater</validate>
+                        </default_depth>
+                        <default_weight translate="label">
+                            <label>Default package weight if not specified in product (kg)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>53</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>required-entry</validate>
+                            <validate>validate-number</validate>
+                            <validate>validate-zero-or-greater</validate>
+                        </default_weight>
+                        <showmethod translate="label">
+                            <label>Show Royal Mail option even if delivery country is not served by Royal Mail</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </showmethod>
                    </fields>
-                </Gareth_RoyalMail2>
+                </gareth_royalmail2>
             </groups>
         </carriers>
     </sections>

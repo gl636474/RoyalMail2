@@ -2,6 +2,8 @@
 
 etc       app/code/local/Gareth/RoyalMail2/etc
 Model     app/code/local/Gareth/RoyalMail2/Model
+sql     app/code/local/Gareth/RoyalMail2/sql
+data     app/code/local/Gareth/RoyalMail2/data
 Gareth_RoyalMail2.xml  app/etc/modules/Gareth_RoyalMail2.xml
 
 # Create logs - Magento 1.9.4.x needs these files to already exist

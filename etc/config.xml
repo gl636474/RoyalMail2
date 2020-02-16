@@ -2,23 +2,70 @@
 <config>
     <global>
         <models>
+            <!-- This tag is the pre-slash part of the model identifier -->
             <gareth_royalmail2>
                 <class>Gareth_RoyalMail2_Model</class>
+                <resourceModel>gareth_royalmail2_mysql4</resourceModel>
             </gareth_royalmail2>
+            <gareth_royalmail2_mysql4>
+                <class>Gareth_RoyalMail2_Model_Mysql4</class>
+                <entities>
+                    <service>
+                        <table>gareth_royalmail2_service</table>
+                    </service>
+                    <size>
+                        <table>gareth_royalmail2_size</table>
+                    </size>
+                    <price>
+                        <table>gareth_royalmail2_price</table>
+                    </price>
+                    <effectivefrom>
+                        <table>gareth_royalmail2_effective_from</table>
+                    </effectivefrom>
+                </entities>
+            </gareth_royalmail2_mysql4>
         </models>
+        <resources>
+            <royalmail2_setup>
+                <setup>
+                    <module>Gareth_RoyalMail2</module>
+                    <class>Gareth_RoyalMail2_Model_Resource_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </royalmail2_setup>
+            <royalmail2_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </royalmail2_write>
+            <royalmail2_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </royalmail2_read>
+        </resources>
     </global>
     <default>
     <!-- Setting default values for the System Configuration UI and in
         particular the custom config defined in system.xml -->
         <carriers>
+            <!-- This must match $_code variable -->
             <gareth_royalmail2>
                 <active>1</active>
                 <sort_order>1</sort_order>
                 <model>gareth_royalmail2/carrier</model>
                 <name>Royal Mail</name>
                 <title>Royal Mail</title>
-                <sallowspecific>0</sallowspecific>
-                <!-- specificcountry>UK</specificcountry -->
+                <sallowspecific>1</sallowspecific>
+                <!-- GB is country ID for United Kingdom! -->
+                <specificcountry>GB</specificcountry>
+                <default_length>10</default_length>
+                <default_width>10</default_width>
+                <default_depth>10</default_depth>
+                <default_weight>0.333</default_weight>
+                <showmethod>1</showmethod>
             </gareth_royalmail2>
         </carriers>
     </default>
