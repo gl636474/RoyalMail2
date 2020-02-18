@@ -86,8 +86,6 @@ class Gareth_RoyalMail2_Model_Carrier
     	$default_depth = $this->getConfigData('default_depth');
     	$default_weight = $this->getConfigData('default_weight');
     	
-    	Mage::log("Read carrier defaults: $default_length, $default_width, $default_depth, $default_weight", Zend_Log::DEBUG, 'gareth.log');
-    	
     	$total_weight = 0;
     	$total_volume = 0;
     	$max_length = 0;
@@ -136,8 +134,6 @@ class Gareth_RoyalMail2_Model_Carrier
     		// otherwise they will be null
     		$productId = $item->getProduct()->getId();
     		$full_product = Mage::getModel('catalog/product')->load($productId);
-    		
-    		// TODO: must check empty(getPackageWidth()) etc hasData() returns true for zero.
     		
     		$product_length = $full_product->getPackageHeight();
     		if (empty($product_length))
@@ -199,9 +195,9 @@ class Gareth_RoyalMail2_Model_Carrier
     		$max_depth = max($max_depth, $product_depth);
     	}
     	
-    	Mage::log('RoyalMail: total volume: '.$total_volume, Zend_Log::INFO, 'gareth.log');
-    	Mage::log('RoyalMail: total weight: '.$total_weight, Zend_Log::INFO, 'gareth.log');
-    	Mage::log("RoyalMail: max dimentions: $max_length x $max_width x $max_depth", Zend_Log::DEBUG, 'gareth.log');
+    	Mage::log('Total volume: '.$total_volume, Zend_Log::INFO, 'gareth.log');
+    	Mage::log('Total weight: '.$total_weight, Zend_Log::INFO, 'gareth.log');
+    	Mage::log("Max dimentions: $max_length x $max_width x $max_depth", Zend_Log::DEBUG, 'gareth.log');
     	
     	return array($total_volume, $total_weight, $max_length, $max_width, $max_depth);
     }
@@ -236,7 +232,7 @@ class Gareth_RoyalMail2_Model_Carrier
     		return false;
     	}
     	
-    	Mage::Log("collectRates() delivery for country ID: ".$request->getDestCountryId(), Zend_Log::DEBUG, 'gareth.log');
+    	Mage::Log("RoyalMail2_Carrier::collectRates(): delivery for country ID: ".$request->getDestCountryId(), Zend_Log::DEBUG, 'gareth.log');
     	
     	// inspect all items for total weight/volume and max width/height/depth
     	list($total_volume, $total_weight, $max_length, $max_width, $max_depth) = $this->calculateTotalVolumeAndWeight($request->getAllItems());
@@ -306,14 +302,16 @@ class Gareth_RoyalMail2_Model_Carrier
 			/* @var $service Gareth_RoyalMail2_Model_Service */
 			$service = $this->getAllServices()[$serviceId];
 			
+			$shippingPrice = $this->getFinalPriceWithHandlingFee($price->getPrice());
+			
 			/** @var Mage_Shipping_Model_Rate_Result_Method $rate */
 			$method = Mage::getModel('shipping/rate_result_method');
 			$method->setCarrier($this->_code);
 			$method->setCarrierTitle($this->getConfigData('title'));
 			$method->setMethod($service->getCode());
 			$method->setMethodTitle($service->getName());
-			$method->setPrice($price->getPrice());
-			$method->setCost($price->getPrice());
+			$method->setPrice($shippingPrice);
+			$method->setCost($shippingPrice);
 			
 			$rate_result->append($method);
 		}

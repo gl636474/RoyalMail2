@@ -56,7 +56,6 @@
                 <active>1</active>
                 <sort_order>1</sort_order>
                 <model>gareth_royalmail2/carrier</model>
-                <name>Royal Mail</name>
                 <title>Royal Mail</title>
                 <sallowspecific>1</sallowspecific>
                 <!-- GB is country ID for United Kingdom! -->
